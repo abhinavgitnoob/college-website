@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Registration Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    form { max-width: 500px; margin: auto; }
+    label { font-weight: bold; margin-top: 10px; display: block; }
+    input, select { width: 100%; padding: 8px; margin: 5px 0 15px 0; }
+    button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; }
+    button:hover { background-color: #45a049; }
+  </style>
+  <script>
+    function validateForm() {
+      const name = document.forms["regForm"]["name"].value;
+      const email = document.forms["regForm"]["email"].value;
+      const phone = document.forms["regForm"]["phone"].value;
+      const course = document.forms["regForm"]["course"].value;
+      
+      if (name == "" || email == "" || phone == "" || course == "") {
+        alert("All fields must be filled out");
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>College Registration Form</h2>
+  
+  <form name="regForm" action="https://your-heroku-app.herokuapp.com/submit.php" method="POST" onsubmit="return validateForm()">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="course">Course:</label>
+    <select id="course" name="course">
+      <option value="Computer Science">Computer Science</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Business Administration">Business Administration</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
